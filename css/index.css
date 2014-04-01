@@ -1,0 +1,60 @@
+.small-box{
+    padding: 1% 8%;
+    position: relative;
+    margin: 0 auto;
+}
+
+
+.small-box a{
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 100%;
+    padding: 10px;
+}
+.small-box a.selected-form{
+    color: #fff;
+    background-color: #365ebe;
+    border-radius: 20px;
+}
+
+.small-box a.selected-form:after{
+    width: 0;
+    height: 103%;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.header nav ul li a{
+    font-size: 18px;
+}
+
+.fields div p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 0;
+}
+
+.fields div p a{
+    cursor: pointer;
+}
+
+.fields div p.expanded{
+    overflow: visible;
+    white-space: normal;
+}
+
+.fields a.description{
+    content: 'Read more';
+
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html ng-app="museApp">
+<head>
+    <title>Test</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="css/harmony.css" rel="stylesheet" type="text/css" />
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+
+    <script src="js/lib/jquery-2.1.0.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/controllers.js"></script>
+</head>
+<body ng-controller="FormCtrl">
+<header class="header">
+    <div class="nano overthrow navigation-content">
+        <div class="navigation-inner" tabindex="0">
+            <!--hgroup>
+                <div class="home-link"><a href="http://harmony.intuit.com/" title="Harmony Toolkit"><i class="icon-home"></i></a></div><div class="nav-toggle"><a href="#"><i class="icon-reorder"></i></a></div><div class="search-toggle"><a href="#"><i class="icon-search"></i></a></div>
+            </hgroup-->
+
+            <form action="http://harmony.intuit.com/" class="search-form" style="display: none;">
+                <fieldset>
+                    <input type="text" class="search-form-input text" name="s" onfocus="if (this.value == 'Search the toolkit') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search the toolkit';}" value="Search the toolkit">
+                    <input type="submit" value="Search" class="submit search-button">
+                </fieldset>
+            </form>
+            <nav>
+                <div class="menu-primary-container">
+                    <ul id="menu-primary" class="nav">
+                        <li class="year menu-item menu-item-type-post_type menu-item-object-page" ng-click="selectMenuItem('year')" ng-class="{'current-menu-item': selectedMenuItem == 'year'}">
+                            <a href="" >{{selectedYear}}</a>
+                            <ul class="sub-menu">
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page" ng-repeat="year in years"><a href="" ng-click="selectYear(year)">{{year}}</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page" ng-repeat="module in modules|filter:{year: selectedYear}" ng-click="selectMenuItem(module.id)" ng-class="{'current-menu-item': selectedMenuItem == module.id}"><a href="" ng-click="selectModule()">{{module.name}}</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
+        <div class="pane" style="display: block;"><div class="slider" style="height: 301px; top: 2.1676646706586826px;"></div></div></div>
+</header>
+
+<div id="wrapper">
+    <article class="post-8 framework type-framework status-publish hentry category-visual post" ng-show="selectedModule">
+        <section class="small-box clearfix">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>{{selectedModule.name}} {{selectedYear}}</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2" ng-repeat="entity in entities|orderBy:'type':false">
+                    <h3><a href="#" ng-click="selectEntity(entity)" ng-class="{'selected-form': entity == selectedEntity}">{{entity.name}}</a></h3>
+                </div>
+            </div>
+        </section>
+    </article>
+    <article class="post-17 page type-page status-publish hentry post">
+        <div class="box clearfix" ng-show="fields.length > 0">
+            <h2>{{selectedEntity.name}} Entity Fields</h2>
+            <div class="row">
+                <div class="col-lg-10">
+                    <div class="row">
+                        <div class="col-lg-3">Field Name</div>
+                        <div class="col-lg-3">ATE Value</div>
+                        <div class="col-lg-3">TPS Value</div>
+                        <div class="col-lg-3">Description</div>
+                    </div>
+                    <div class="row fields" ng-repeat="field in fields|orderBy:'name':false">
+                        <div class="col-lg-3"><input type="text" value="{{field.customName?field.customName:field.name}}" /></div>
+                        <div class="col-lg-3">{{field.ateValue}}</div>
+                        <div class="col-lg-3">{{field.tpsValue}}</div>
+                        <div class="col-lg-3">
+                            <p ng-class="{'expanded': field.show_description}">
+                                <a class="description" ng-show="!field.show_description" ng-click="field.show_description = !field.show_description"><i class="icon-plus"></i> </a>
+                                <a class="description" ng-show="field.show_description" ng-click="field.show_description = !field.show_description"><i class="icon-minus"></i> </a>
+                                {{field.description.trim()}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <button ng-click="addNewField()" class="btn btn-default">
+                                Add new field
+                            </button>
+                        </div>
+                        <div class="col-lg-4 col-lg-offset-4">
+                            <button type="submit" class="btn btn-primary pull-right">
+                                Save changes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
+</body>
+</html>
