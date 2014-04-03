@@ -6,6 +6,7 @@ app.config(['$routeProvider', function($routeProvider){
     $routeProvider
         .when('/module/:id', {templateUrl: 'partials/entities.html', controller: 'EntitiesCtrl'})
         .when('/fields/:id', {templateUrl: 'partials/fields.html', controller: 'FieldsCtrl'})
-        .when('/entity/:moduleId/:id', {templateUrl: 'partials/entity.html', controller: 'EntityCtrl'})
+        .when('/addEntity/:moduleId', {templateUrl: 'partials/entity.html', controller: 'EntityCtrl'})
+        .when('/updateEntity/:id', {templateUrl: 'partials/entity.html', controller: 'EntityCtrl'})
         .otherwise({redirectTo: '/', controller: 'ModuleCtrl'})
 }]);

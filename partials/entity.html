@@ -1,9 +1,9 @@
-<div ng-controller="EntityCtrl">
+<div id="entity" ng-controller="EntityCtrl">
     <h1>Entity Information</h1>
     <form name="entityForm">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" ng-model="entity.name" required pascal />
-        <div ng-show="entityForm.name.$error.pascal">
+        <div ng-show="entityForm.name.$error.pascal" class="warning">
             Entity names must be Pascal case with no special characters. Example: EntityName
         </div>
         <label for="description">Description</label>

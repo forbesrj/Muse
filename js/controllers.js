@@ -7,9 +7,14 @@ app.controller('ModuleCtrl', function($scope, $filter, $routeParams, entities, f
     $scope.modules = modules;
     $scope.selectedYear =  ($filter("filter")(years, {current: true}))[0];
     $scope.selectedMenuItem = {};
+    $scope.selectedModule = null;
+    $scope.selectedEntity = null;
 
     $scope.selectMenuItem = function(item){
         $scope.selectedMenuItem = item;
+        if(item != 'year'){
+            $scope.selectedModule = $filter('filter')(modules, {id: item}, 'true')[0];
+        }
     };
 
     $scope.selectYear = function(year){
@@ -19,6 +24,7 @@ app.controller('ModuleCtrl', function($scope, $filter, $routeParams, entities, f
 });
 
 app.controller('EntitiesCtrl', function($scope, $routeParams, $filter, entities, entityfields){
+    $scope.$parent.selectedEntity = null;
     $scope.search = '';
     $scope.entities = [];
     $scope.moduleId = $routeParams.id;
@@ -59,11 +65,12 @@ app.controller('EntitiesCtrl', function($scope, $routeParams, $filter, entities,
     };
 });
 
-app.controller('FieldsCtrl', function($scope, $routeParams, $filter, entities, entityfields, fields){
+app.controller('FieldsCtrl', function($scope, $rootScope, $routeParams, $filter, entities, entityfields, fields){
     $scope.fields = [];
+    $scope.$parent.selectedEntity = $filter('filter')(entities, {id: $routeParams.id}, 'true')[0];
     $scope.getFields = function(){
         var results = [];
-        var fieldsInForm = $filter('filter')(entityfields, {formId: $routeParams.id});
+        var fieldsInForm = $filter('filter')(entityfields, {formId: $routeParams.id}, 'true');
 
         angular.forEach(fields, function(field){
             if(($filter('filter')(fieldsInForm, {fieldId: field.id})).length > 0){

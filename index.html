@@ -51,6 +51,30 @@
 </header>
 
 <div id="wrapper">
+    <article class="post-8 framework type-framework status-publish hentry category-visual post">
+        <section class="small-box clearfix">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Tax Modeler</h1>
+                    <h2 ng-show="selectedModule">{{selectedModule.module}} {{selectedYear.calendarYear}}</h2>
+                </div>
+            </div>
+            <div class="row" ng-show="selectedEntity">
+                <div class="col-md-3">
+                    <h2>{{selectedEntity.name}}</h2>
+                    <a href="./#/updateEntity/{{selectedEntity.id}}" class="btn btn-default">Update {{selectedEntity.name}}</a>
+                </div>
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-3">
+                        {{selectedEntity.description}}
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+        </section>
+    </article>
     <article class="post-17 page type-page status-publish hentry post">
         <div class="box clearfix" ng-view>
 
