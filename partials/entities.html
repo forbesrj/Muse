@@ -1,0 +1,19 @@
+<div ng-controller="EntitiesCtrl">
+    <div>
+        <h1>Entities</h1>
+        <label for="search">Search</label>
+        <input type="text" id="search" ng-model="search" />
+        <a href="./#/entity/{{moduleId}}/0" class="btn btn-default">
+            Add new entity
+        </a>
+    </div>
+
+    <div ng-repeat="letter in alphabet">
+        <h1>{{letter[0].name[0].toUpperCase()}}</h1>
+        <div class="row">
+            <div class="col-md-2" ng-repeat="entity in letter|filter: {name: search}">
+                <a href="./#/fields/{{entity.id}}">{{entity.name}}</a>
+            </div>
+        </div>
+    </div>
+</div>

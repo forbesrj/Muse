@@ -1,0 +1,37 @@
+<div ng-controller="FieldsCtrl">
+    <h2>{{selectedEntity.name}} Entity Fields</h2>
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="row">
+                <div class="col-lg-3">Field Name</div>
+                <div class="col-lg-3">ATE Value</div>
+                <div class="col-lg-3">TPS Value</div>
+                <div class="col-lg-3">Description</div>
+            </div>
+            <div class="row fields" ng-repeat="field in fields|orderBy:'name':false">
+                <div class="col-lg-3"><input type="text" value="{{field.customName?field.customName:field.name}}" /></div>
+                <div class="col-lg-3">{{field.ateValue}}</div>
+                <div class="col-lg-3">{{field.tpsValue}}</div>
+                <div class="col-lg-3">
+                    <p ng-class="{'expanded': field.show_description}">
+                        <a class="description" ng-show="!field.show_description" ng-click="field.show_description = !field.show_description"><i class="icon-plus"></i> </a>
+                        <a class="description" ng-show="field.show_description" ng-click="field.show_description = !field.show_description"><i class="icon-minus"></i> </a>
+                        {{field.description.trim()}}
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <button ng-click="addNewField()" class="btn btn-default">
+                        Add new field
+                    </button>
+                </div>
+                <div class="col-lg-4 col-lg-offset-4">
+                    <button type="submit" class="btn btn-primary pull-right">
+                        Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

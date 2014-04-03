@@ -1,8 +1,11 @@
 /**
  * Created by rforbes on 3/26/14.
  */
-/*app.config(['$routeProvider', function($routeProvider){
+var app = angular.module('museApp', ['ngRoute', 'dataServices']);
+app.config(['$routeProvider', function($routeProvider){
     $routeProvider
-
-        .otherwise({redirectTo: '/', templateUrl: ''})
-}])*/
+        .when('/module/:id', {templateUrl: 'partials/entities.html', controller: 'EntitiesCtrl'})
+        .when('/fields/:id', {templateUrl: 'partials/fields.html', controller: 'FieldsCtrl'})
+        .when('/entity/:moduleId/:id', {templateUrl: 'partials/entity.html', controller: 'EntityCtrl'})
+        .otherwise({redirectTo: '/', controller: 'ModuleCtrl'})
+}]);

@@ -1,0 +1,20 @@
+<div ng-controller="EntityCtrl">
+    <h1>Entity Information</h1>
+    <form name="entityForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" ng-model="entity.name" required pascal />
+        <div ng-show="entityForm.name.$error.pascal">
+            Entity names must be Pascal case with no special characters. Example: EntityName
+        </div>
+        <label for="description">Description</label>
+        <textarea id="description" ng-model="entity.description"></textarea>
+        <h2>Jurisdictions</h2>
+        <div class="row">
+            <div class="col-md-3" ng-repeat="jurisdiction in jurisdictions">
+                <input type="checkbox" id="{{jurisdiction.id}}" ng-model="entity.jurisdictions" />
+                <label for="{{jurisdiction.id}}">{{jurisdiction.name}}</label>
+            </div>
+        </div>
+        <a href="" class="btn btn-primary" ng-click="save(entity)" ng-disabled="entityForm.$invalid">Save</a>
+    </form>
+</div>
