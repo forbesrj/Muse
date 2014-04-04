@@ -36,11 +36,11 @@
                         <li class="year menu-item menu-item-type-post_type menu-item-object-page" ng-click="selectMenuItem('year')" ng-class="{'current-menu-item': selectedMenuItem == 'year'}">
                             <a href="" >{{selectedYear.calendarYear}}</a>
                             <ul class="sub-menu">
-                                <li class="menu-item menu-item-type-post_type menu-item-object-page" ng-repeat="year in years"><a href="" ng-click="selectYear(year.calendarYear)">{{year.calendarYear}}</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page" ng-repeat="year in years"><a href="./" ng-click="selectYear(year.calendarYear)">{{year.calendarYear}}</a></li>
                             </ul>
                         </li>
                         <li class="menu-item menu-item-type-post_type menu-item-object-page" ng-repeat="module in modules" ng-click="selectMenuItem(module.id)" ng-class="{'current-menu-item': selectedMenuItem == module.id}">
-                            <a href="./#/module/{{module.id}}">{{module.module}}</a>
+                            <a href="./#/module/{{selectedYear.calendarYear}}/{{module.id}}">{{module.module}}</a>
                         </li>
                     </ul>
                 </div>
@@ -76,8 +76,8 @@
         </section>
     </article>
     <article class="post-17 page type-page status-publish hentry post">
-        <div class="box clearfix" ng-view>
-
+        <div class="small-box clearfix" ng-view>
+            <p>Welcome to the Tax Modeler. Please select a year and a tax module to update.</p>
         </div>
     </article>
 </div>

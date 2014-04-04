@@ -23,11 +23,12 @@ app.controller('ModuleCtrl', function($scope, $filter, $routeParams, entities, f
     };
 });
 
-app.controller('EntitiesCtrl', function($scope, $routeParams, $filter, entities, entityfields){
+app.controller('EntitiesCtrl', function($scope, $routeParams, $filter, $location, $anchorScroll, entities, entityfields){
     $scope.$parent.selectedEntity = null;
     $scope.search = '';
     $scope.entities = [];
     $scope.moduleId = $routeParams.id;
+    $scope.year = $routeParams.year;
     $scope.getEntities = function(){
         var formsInModule = $filter('filter')(entityfields, {typeId: $scope.moduleId});
 
@@ -41,12 +42,14 @@ app.controller('EntitiesCtrl', function($scope, $routeParams, $filter, entities,
     };
     $scope.entities = $scope.getEntities();
     $scope.alphabet = [];
-    $scope.getAlphabet = function(){
+    $scope.groupedEntities = [];
+    $scope.getGroupedEntities = function(){
         var result = [];
         $scope.entities = $filter('orderBy')($scope.entities, 'name', false);
         angular.forEach($scope.entities, function(entity){
-            if(result.length == 0 || result[result.length - 1][0].name[0].toLowerCase() != entity.name[0].toLowerCase()){
-                result.push([entity]);
+            if(result.length == 0 || result[result.length - 1][0][0].name[0].toLowerCase() != entity.name[0].toLowerCase()){
+                result.push([[entity]]);
+                $scope.alphabet.push( entity.name[0].toUpperCase());
             } else{
                 var currentRow = result[result.length - 1][result[result.length - 1].length -1];
                 if(currentRow.length < 6){
@@ -58,16 +61,24 @@ app.controller('EntitiesCtrl', function($scope, $routeParams, $filter, entities,
         });
         return result;
     };
-    $scope.alphabet = $scope.getAlphabet();
+    $scope.groupedEntities = $scope.getGroupedEntities();
 
     $scope.addNewEntity = function(){
         $(".fields:last").after('<div class="col-md-2"><input type="text" placeholder="Entity " name="newField" value="" /></div>');
     };
+
+    $scope.scrollTo = function(id) {
+        $location.hash(id);
+        $anchorScroll();
+    };
 });
 
-app.controller('FieldsCtrl', function($scope, $rootScope, $routeParams, $filter, entities, entityfields, fields){
+app.controller('FieldsCtrl', function($scope, $rootScope, $routeParams, $filter, entities, entityfields, fields, modules, years){
     $scope.fields = [];
     $scope.$parent.selectedEntity = $filter('filter')(entities, {id: $routeParams.id}, 'true')[0];
+    $scope.$parent.selectedModule = $filter('filter')(modules, {id: $routeParams.moduleId}, 'true')[0];
+    $scope.$parent.selectedYear = $filter('filter')(years, {calendarYear: $routeParams.year}, 'true')[0];
+
     $scope.getFields = function(){
         var results = [];
         var fieldsInForm = $filter('filter')(entityfields, {formId: $routeParams.id}, 'true');
@@ -88,12 +99,13 @@ app.controller('FieldsCtrl', function($scope, $rootScope, $routeParams, $filter,
 });
 
 app.controller('EntityCtrl', function($scope, $routeParams, $filter, entities, jurisdictions){
+    var foundEntity = $filter('filter')(entities, {id: $routeParams.id}, 'true')[0];
     $scope.entity = {
         'id': $routeParams.id,
         'moduleId': $routeParams.moduleId,
-        'name': null,
-        'description': null,
-        'jurisdictions': null
+        'name': foundEntity.name,
+        'description': foundEntity.description,
+        'jurisdictions': foundEntity.jurisdictions
     };
     $scope.jurisdictions = jurisdictions;
 

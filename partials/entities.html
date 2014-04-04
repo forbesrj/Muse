@@ -8,11 +8,16 @@
         </a>
     </div>
 
-    <div ng-repeat="letter in alphabet">
-        <h1>{{letter[0].name[0].toUpperCase()}}</h1>
-        <div class="row">
-            <div class="col-md-2" ng-repeat="entity in letter|filter: {name: search}">
-                <a href="./#/fields/{{entity.id}}">{{entity.name}}</a>
+    <ul class="index">
+        <li ng-repeat="letter in alphabet"><a href="" ng-click="scrollTo(letter)">{{letter}}</a></li>
+    </ul>
+
+    <div ng-repeat="letter in groupedEntities">
+        <a id="{{letter[0][0].name[0].toUpperCase()}}"></a>
+        <h1>{{letter[0][0].name[0].toUpperCase()}}</h1>
+        <div class="row" ng-repeat="row in letter">
+            <div class="col-md-2" ng-repeat="entity in row|filter: {name: search}">
+                <a href="./#/fields/{{year}}/{{moduleId}}/{{entity.id}}">{{entity.name}}</a>
             </div>
         </div>
     </div>

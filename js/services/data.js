@@ -15,7 +15,16 @@ serviceApp.factory('entities', function(){
     return [
         {'id': 1, 'name': 'W2'},
         {'id': 2, 'name': '1040'},
-        {'id': 3, 'name': 'E2'}
+        {'id': 3, 'name': 'E2'},
+        {'id': 4, 'name': 'W1'},
+        {'id': 5, 'name': 'W5'},
+        {'id': 6, 'name': 'E3'},
+        {'id': 7, 'name': 'W3'},
+        {'id': 8, 'name': '1099'},
+        {'id': 9, 'name': 'Test'},
+        {'id': 10, 'name': 'W4'},
+        {'id': 11, 'name': 'W8'},
+        {'id': 12, 'name': 'EZ-PAY'}
     ];
 });
 
@@ -38,14 +47,23 @@ serviceApp.factory('entityfields', function(){
        {'id': 1, 'typeId': 1, 'formId': 2, 'fieldId': 3},
        {'id': 1, 'typeId': 1, 'formId': 3, 'fieldId': 1},
        {'id': 1, 'typeId': 1, 'formId': 3, 'fieldId': 2},
-       {'id': 1, 'typeId': 4, 'formId': 1, 'fieldId': 1},
+       {'id': 1, 'typeId': 1, 'formId': 4, 'fieldId': 1},
+       {'id': 1, 'typeId': 1, 'formId': 5, 'fieldId': 2},
+       {'id': 1, 'typeId': 1, 'formId': 6, 'fieldId': 3},
+       {'id': 1, 'typeId': 1, 'formId': 7, 'fieldId': 4},
+       {'id': 1, 'typeId': 1, 'formId': 8, 'fieldId': 1},
+       {'id': 1, 'typeId': 1, 'formId': 9, 'fieldId': 2},
+       {'id': 1, 'typeId': 1, 'formId': 10, 'fieldId': 3},
+       {'id': 1, 'typeId': 1, 'formId': 11, 'fieldId': 1},
+       {'id': 1, 'typeId': 1, 'formId': 12, 'fieldId': 2},
+       {'id': 1, 'typeId': 4, 'formId': 12, 'fieldId': 1},
        {'id': 1, 'typeId': 4, 'formId': 1, 'fieldId': 2},
        {'id': 1, 'typeId': 4, 'formId': 1, 'fieldId': 3},
        {'id': 1, 'typeId': 4, 'formId': 1, 'fieldId': 4},
        {'id': 1, 'typeId': 8, 'formId': 1, 'fieldId': 1},
        {'id': 1, 'typeId': 8, 'formId': 1, 'fieldId': 2},
        {'id': 1, 'typeId': 8, 'formId': 1, 'fieldId': 3},
-       {'id': 1, 'typeId': 8, 'formId': 1, 'fieldId': 4},
+       {'id': 1, 'typeId': 8, 'formId': 1, 'fieldId': 4}
    ]
 });
 
@@ -117,6 +135,6 @@ serviceApp.factory('jurisdictions', function(){
         {'id': 48, 'name': 'Washington', 'abbreviation': 'WA', 'jurisdictions': null},
         {'id': 49, 'name': 'West Virginia', 'abbreviation': 'WV', 'jurisdictions': null},
         {'id': 50, 'name': 'Wisconsin', 'abbreviation': 'WI', 'jurisdictions': null},
-        {'id': 51, 'name': 'Wyoming', 'abbreviation': 'WY', 'jurisdictions': null},
+        {'id': 51, 'name': 'Wyoming', 'abbreviation': 'WY', 'jurisdictions': null}
     ];
 });

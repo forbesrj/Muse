@@ -66,3 +66,12 @@ a.btn {
 button {
   margin-top: 20px;
 }
+ul.index {
+  list-style-image: none;
+}
+ul.index li {
+  display: inline;
+}
+ul.index li:before {
+  display: none;
+}
