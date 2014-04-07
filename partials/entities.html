@@ -1,16 +1,28 @@
 <div ng-controller="EntitiesCtrl">
-    <div>
-        <h1>Entities</h1>
-        <label for="search">Search</label>
-        <input type="text" id="search" ng-model="search" />
-        <a href="./#/addEntity/{{moduleId}}" class="btn btn-default">
-            Add new entity
-        </a>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Entities</h1>
+            <label for="search">Search</label>
+            <input type="text" id="search" ng-model="search" />
+        </div>
     </div>
 
-    <ul class="index">
-        <li ng-repeat="letter in alphabet"><a href="" ng-click="scrollTo(letter)">{{letter}}</a></li>
-    </ul>
+    <div class="row">
+        <div class="col-md-4">
+            <a href="./#/addEntity/{{moduleId}}" class="btn btn-default">
+                Add new entity
+            </a>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="index">
+                <li ng-repeat="letter in alphabet"><a href="" ng-click="scrollTo(letter)">{{letter}}</a></li>
+            </ul>
+        </div>
+    </div>
 
     <div ng-repeat="letter in groupedEntities">
         <a id="{{letter[0][0].name[0].toUpperCase()}}"></a>

@@ -9,8 +9,9 @@
   transition: all 0.3s;
   width: 100%;
   padding: 10px;
+  margin: 1px;
 }
-.small-box a.selected-form {
+.small-box a:hover {
   color: #ffffff;
   background-color: #365ebe;
   border-radius: 20px;
@@ -26,9 +27,9 @@
   -ms-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   z-index: -1;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
 }
 .header nav ul li a {
   font-size: 18px;
@@ -68,10 +69,24 @@ button {
 }
 ul.index {
   list-style-image: none;
+  padding-left: 0;
+  margin: 20px 0;
 }
 ul.index li {
   display: inline;
 }
 ul.index li:before {
   display: none;
+}
+ul.index li a {
+  width: 100%;
+  padding: 5px 1em;
+  margin-left: 3px;
+  border: 1px solid #778;
+  border-bottom: none;
+  text-decoration: none;
+}
+ul.index li a:hover {
+  background-color: #365ebe;
+  color: #ffffff;
 }
