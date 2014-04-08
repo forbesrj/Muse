@@ -1,16 +1,20 @@
 <div ng-controller="FieldsCtrl">
     <h2>{{selectedEntity.name}} Entity Fields</h2>
+    <a href="">View series</a>
     <div class="row">
         <div class="col-lg-10">
             <div class="row">
-                <div class="col-lg-3">Field Name</div>
-                <div class="col-lg-3">ATE Value</div>
-                <div class="col-lg-3">TPS Value</div>
+                <div class="col-lg-3">Field name</div>
+                <div class="col-lg-3">ATE value</div>
+                <div class="col-lg-3">TPS value</div>
                 <div class="col-lg-3">Description</div>
             </div>
             <div class="row fields" ng-repeat="field in fields|orderBy:'name':false">
                 <div class="col-lg-3"><input type="text" value="{{field.customName?field.customName:field.name}}" /></div>
-                <div class="col-lg-3">{{field.ateValue}}</div>
+                <div class="col-lg-3">
+
+                    <select id="{{field.id}}" multiple ng-model="field.ateValues" ng-options="ateField.id as ateField.name group by ateField.seriesId for ateField in ateFields"></select>
+                </div>
                 <div class="col-lg-3">{{field.tpsValue}}</div>
                 <div class="col-lg-3">
                     <p ng-class="{'expanded': field.show_description}">

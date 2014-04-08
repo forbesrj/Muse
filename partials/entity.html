@@ -11,10 +11,19 @@
         <h2>Jurisdictions</h2>
         <div class="row">
             <div class="col-md-3" ng-repeat="jurisdiction in jurisdictions">
-                <input type="checkbox" id="{{jurisdiction.id}}" ng-model="entity.jurisdictions" />
+                <input type="checkbox" id="{{jurisdiction.id}}" ng-model="entity.jurisdictions.jurisdiction" />
                 <label for="{{jurisdiction.id}}">{{jurisdiction.name}}</label>
             </div>
         </div>
-        <a href="" class="btn btn-primary" ng-click="save(entity)" ng-disabled="entityForm.$invalid">Save</a>
+        <div class="row">
+            <div class="col-md-5">
+                <button class="btn btn-primary" ng-click="save(entity)" ng-disabled="entityForm.$invalid">Save</button>
+            </div>
+            <div class="col-md-5 col-md-offset-2">
+                <a href="./#/series/{{entity.id}}" class="btn btn-default" ng-disabled="entityForm.$invalid">
+                    Add series to entity
+                </a>
+            </div>
+        </div>
     </form>
 </div>

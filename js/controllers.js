@@ -30,7 +30,7 @@ app.controller('EntitiesCtrl', function($scope, $routeParams, $filter, $location
     $scope.moduleId = $routeParams.id;
     $scope.year = $routeParams.year;
     $scope.getEntities = function(){
-        var formsInModule = $filter('filter')(entityfields, {typeId: $scope.moduleId});
+        var formsInModule = $filter('filter')(entityfields, {typeId: $scope.moduleId}, 'true');
 
         var foundEntities = [];
         angular.forEach(entities, function(entity){
@@ -73,11 +73,12 @@ app.controller('EntitiesCtrl', function($scope, $routeParams, $filter, $location
     };
 });
 
-app.controller('FieldsCtrl', function($scope, $rootScope, $routeParams, $filter, entities, entityfields, fields, modules, years){
+app.controller('FieldsCtrl', function($scope, $rootScope, $routeParams, $filter, entities, entityfields, fields, atefields, modules, years){
     $scope.fields = [];
     $scope.$parent.selectedEntity = $filter('filter')(entities, {id: $routeParams.id}, 'true')[0];
     $scope.$parent.selectedModule = $filter('filter')(modules, {id: $routeParams.moduleId}, 'true')[0];
     $scope.$parent.selectedYear = $filter('filter')(years, {calendarYear: $routeParams.year}, 'true')[0];
+    $scope.ateFields = atefields;
 
     $scope.getFields = function(){
         var results = [];
@@ -85,6 +86,7 @@ app.controller('FieldsCtrl', function($scope, $rootScope, $routeParams, $filter,
 
         angular.forEach(fields, function(field){
             if(($filter('filter')(fieldsInForm, {fieldId: field.id})).length > 0){
+                field.ateValues = $filter('filter')(atefields, {'id': field.ateId});
                 results.push(field);
             }
         });
@@ -98,7 +100,7 @@ app.controller('FieldsCtrl', function($scope, $rootScope, $routeParams, $filter,
 
 });
 
-app.controller('EntityCtrl', function($scope, $routeParams, $filter, entities, jurisdictions){
+app.controller('EntityCtrl', function($scope, $routeParams, $filter, $location, entities, jurisdictions){
     var foundEntity = $filter('filter')(entities, {id: $routeParams.id}, 'true')[0];
     $scope.entity = {
         'id': $routeParams.id,
@@ -112,4 +114,21 @@ app.controller('EntityCtrl', function($scope, $routeParams, $filter, entities, j
     $scope.save = function(entity){
         //TODO Save added or updated entity MAKE SURE TO TRIM TEXT FIELDS!!!
     };
+
+    $scope.addSeries = function(entity){
+        $scope.save(entity);
+        $location.path('/series/'+entity.id)
+    }
+});
+
+app.controller('SeriesCtrl', function($scope, $routeParams, $filter, $location, series, entities){
+    if(!$scope.$parent.selectedYear || !$scope.$parent.selectedModule){
+        $location.path('/');
+    }
+    else {
+        $scope.series = series;
+        $scope.entityId = $routeParams.id;
+        $scope.year = $scope.$parent.selectedYear.calendarYear;
+        $scope.moduleId = $scope.$parent.selectedModule.id;
+    }
 });
