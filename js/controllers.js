@@ -73,26 +73,48 @@ app.controller('EntitiesCtrl', function($scope, $routeParams, $filter, $location
     };
 });
 
-app.controller('FieldsCtrl', function($scope, $rootScope, $routeParams, $filter, entities, entityfields, fields, atefields, modules, years){
+app.controller('FieldsCtrl', function($scope, $rootScope, $routeParams, $filter, entities, entityfields, fields, atefields, modules, years, series){
     $scope.fields = [];
     $scope.$parent.selectedEntity = $filter('filter')(entities, {id: $routeParams.id}, 'true')[0];
     $scope.$parent.selectedModule = $filter('filter')(modules, {id: $routeParams.moduleId}, 'true')[0];
     $scope.$parent.selectedYear = $filter('filter')(years, {calendarYear: $routeParams.year}, 'true')[0];
-    $scope.ateFields = atefields;
+    $scope.ateFields = [];
+    $scope.series = [];
+
+    $scope.getSeries = function(){
+        $scope.series = [];
+        angular.forEach($scope.$parent.selectedEntity.series, function(seriesId){
+            angular.forEach($filter('filter')(series, {id: seriesId}, 'true'), function(result){
+                $scope.series.push(result);
+            })
+        })
+    };
+    $scope.getSeries();
+
+    $scope.getAteFields = function(){
+        $scope.ateFields = [];
+        angular.forEach($scope.series, function(s){
+            angular.forEach($filter('filter')(atefields, {'seriesId': s.id}, 'true'), function(ateField){
+                if($scope.ateFields.indexOf(ateField) < 0) {
+                    ateField.seriesDescription = s.description;
+                    $scope.ateFields.push(ateField);
+                }
+            });
+        });
+    };
+    $scope.getAteFields();
 
     $scope.getFields = function(){
-        var results = [];
+        $scope.fields = [];
         var fieldsInForm = $filter('filter')(entityfields, {formId: $routeParams.id}, 'true');
 
         angular.forEach(fields, function(field){
             if(($filter('filter')(fieldsInForm, {fieldId: field.id})).length > 0){
-                field.ateValues = $filter('filter')(atefields, {'id': field.ateId});
-                results.push(field);
+                $scope.fields.push(field);
             }
         });
-        return results;
     };
-    $scope.fields = $scope.getFields();
+    $scope.getFields();
 
     $scope.addNewField = function(){
         $(".fields:last").after('<div class="row"> <div class="col-lg-3"><input type="text" name="newField" value="" /></div><div class="col-lg-3"><input type="text" name="newField" value="" /></div><div class="col-lg-3"><input type="text" name="newField" value="" /></div><div class="col-lg-3"><input type="text" name="newField" value="" /></div></div>');

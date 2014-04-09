@@ -13,18 +13,18 @@ serviceApp.factory('modules', function(){
 
 serviceApp.factory('entities', function(){
     return [
-        {'id': 1, 'name': 'W2'},
-        {'id': 2, 'name': '1040'},
-        {'id': 3, 'name': 'E2'},
-        {'id': 4, 'name': 'W1'},
-        {'id': 5, 'name': 'W5'},
-        {'id': 6, 'name': 'E3'},
-        {'id': 7, 'name': 'W3'},
-        {'id': 8, 'name': '1099'},
-        {'id': 9, 'name': 'Test'},
-        {'id': 10, 'name': 'W4'},
-        {'id': 11, 'name': 'W8'},
-        {'id': 12, 'name': 'EZ-PAY'}
+        {'id': 1, 'name': 'W2', 'series':[1]},
+        {'id': 2, 'name': '1040', 'series':[1, 2, 3]},
+        {'id': 3, 'name': 'E2', 'series':[3]},
+        {'id': 4, 'name': 'W1', 'series':[3]},
+        {'id': 5, 'name': 'W5', 'series':[3]},
+        {'id': 6, 'name': 'E3', 'series':[3]},
+        {'id': 7, 'name': 'W3', 'series':[3]},
+        {'id': 8, 'name': '1099', 'series':[2]},
+        {'id': 9, 'name': 'Test', 'series':[1, 2, 3]},
+        {'id': 10, 'name': 'W4', 'series':[3]},
+        {'id': 11, 'name': 'W8', 'series':[3]},
+        {'id': 12, 'name': 'EZ-PAY', 'series':[1, 2, 3]}
     ];
 });
 
@@ -73,29 +73,29 @@ serviceApp.factory('fields', function(){
         {'id': 2, 'name': 'Gross', 'customName': '', 'ateId': 2, 'tpsValue': 'gross', 'description': 'Congratulations, deathballers! Weve won the right to explore the anomaly! I was playing for my freedom! Now, Ive often said good newswhen sending you on a mission of extreme danger. So when I say this anomaly is dangerous, you can imagine how dangerous I really think it is. Not dangerous at all? Actually, quite dangerous indeed. That is quite dangerous! Indeed. Now stop shilly-shallying! Prep the ship and line up for your preflight coffee enemas! Warning. The enema you are about to enjoy is extremely hot.' },
         {'id': 3, 'name': 'SSN', 'customName': '', 'ateId': 3, 'tpsValue': 'ssn', 'description': 'Congratulations, deathballers! Weve won the right to explore the anomaly! I was playing for my freedom! Now, Ive often said good newswhen sending you on a mission of extreme danger. So when I say this anomaly is dangerous, you can imagine how dangerous I really think it is. Not dangerous at all? Actually, quite dangerous indeed. That is quite dangerous! Indeed. Now stop shilly-shallying! Prep the ship and line up for your preflight coffee enemas! Warning. The enema you are about to enjoy is extremely hot.' },
         {'id': 4, 'name': 'Date', 'customName': '', 'ateId': 4, 'tpsValue': 'currentDate', 'description': 'Congratulations, deathballers! Weve won the right to explore the anomaly! I was playing for my freedom! Now, Ive often said good newswhen sending you on a mission of extreme danger. So when I say this anomaly is dangerous, you can imagine how dangerous I really think it is. Not dangerous at all? Actually, quite dangerous indeed. That is quite dangerous! Indeed. Now stop shilly-shallying! Prep the ship and line up for your preflight coffee enemas! Warning. The enema you are about to enjoy is extremely hot.' },
-        {'id': 5, 'name': 'Name', 'customName': '', 'ateId': 5, 'tpsValue': 'name', 'description': 'Congratulations, deathballers! Weve won the right to explore the anomaly! I was playing for my freedom! Now, Ive often said good newswhen sending you on a mission of extreme danger. So when I say this anomaly is dangerous, you can imagine how dangerous I really think it is. Not dangerous at all? Actually, quite dangerous indeed. That is quite dangerous! Indeed. Now stop shilly-shallying! Prep the ship and line up for your preflight coffee enemas! Warning. The enema you are about to enjoy is extremely hot.' },
-        {'id': 6, 'name': 'Name', 'customName': '', 'ateId': 6, 'tpsValue': 'name', 'description': 'Congratulations, deathballers! Weve won the right to explore the anomaly! I was playing for my freedom! Now, Ive often said good newswhen sending you on a mission of extreme danger. So when I say this anomaly is dangerous, you can imagine how dangerous I really think it is. Not dangerous at all? Actually, quite dangerous indeed. That is quite dangerous! Indeed. Now stop shilly-shallying! Prep the ship and line up for your preflight coffee enemas! Warning. The enema you are about to enjoy is extremely hot.' },
-        {'id': 7, 'name': 'Name', 'customName': '', 'ateId': 7, 'tpsValue': 'name', 'description': 'Congratulations, deathballers! Weve won the right to explore the anomaly! I was playing for my freedom! Now, Ive often said good newswhen sending you on a mission of extreme danger. So when I say this anomaly is dangerous, you can imagine how dangerous I really think it is. Not dangerous at all? Actually, quite dangerous indeed. That is quite dangerous! Indeed. Now stop shilly-shallying! Prep the ship and line up for your preflight coffee enemas! Warning. The enema you are about to enjoy is extremely hot.' },
-        {'id': 8, 'name': 'Name', 'customName': '', 'ateId': 8, 'tpsValue': 'name', 'description': 'Congratulations, deathballers! Weve won the right to explore the anomaly! I was playing for my freedom! Now, Ive often said good newswhen sending you on a mission of extreme danger. So when I say this anomaly is dangerous, you can imagine how dangerous I really think it is. Not dangerous at all? Actually, quite dangerous indeed. That is quite dangerous! Indeed. Now stop shilly-shallying! Prep the ship and line up for your preflight coffee enemas! Warning. The enema you are about to enjoy is extremely hot.' },
+        {'id': 5, 'name': 'Net loss', 'customName': '', 'ateId': 5, 'tpsValue': 'name', 'description': 'Congratulations, deathballers! Weve won the right to explore the anomaly! I was playing for my freedom! Now, Ive often said good newswhen sending you on a mission of extreme danger. So when I say this anomaly is dangerous, you can imagine how dangerous I really think it is. Not dangerous at all? Actually, quite dangerous indeed. That is quite dangerous! Indeed. Now stop shilly-shallying! Prep the ship and line up for your preflight coffee enemas! Warning. The enema you are about to enjoy is extremely hot.' },
+        {'id': 6, 'name': 'Dependents', 'customName': '', 'ateId': 6, 'tpsValue': 'name', 'description': 'Congratulations, deathballers! Weve won the right to explore the anomaly! I was playing for my freedom! Now, Ive often said good newswhen sending you on a mission of extreme danger. So when I say this anomaly is dangerous, you can imagine how dangerous I really think it is. Not dangerous at all? Actually, quite dangerous indeed. That is quite dangerous! Indeed. Now stop shilly-shallying! Prep the ship and line up for your preflight coffee enemas! Warning. The enema you are about to enjoy is extremely hot.' },
+        {'id': 7, 'name': 'Dividends', 'customName': '', 'ateId': 7, 'tpsValue': 'name', 'description': 'Congratulations, deathballers! Weve won the right to explore the anomaly! I was playing for my freedom! Now, Ive often said good newswhen sending you on a mission of extreme danger. So when I say this anomaly is dangerous, you can imagine how dangerous I really think it is. Not dangerous at all? Actually, quite dangerous indeed. That is quite dangerous! Indeed. Now stop shilly-shallying! Prep the ship and line up for your preflight coffee enemas! Warning. The enema you are about to enjoy is extremely hot.' },
+        {'id': 8, 'name': 'Birth date', 'customName': '', 'ateId': 8, 'tpsValue': 'name', 'description': 'Congratulations, deathballers! Weve won the right to explore the anomaly! I was playing for my freedom! Now, Ive often said good newswhen sending you on a mission of extreme danger. So when I say this anomaly is dangerous, you can imagine how dangerous I really think it is. Not dangerous at all? Actually, quite dangerous indeed. That is quite dangerous! Indeed. Now stop shilly-shallying! Prep the ship and line up for your preflight coffee enemas! Warning. The enema you are about to enjoy is extremely hot.' },
         {'id': 9, 'name': 'SSN', 'customName': '', 'ateId': 9, 'tpsValue': 'ssn', 'description': 'Congratulations, deathballers! Weve won the right to explore the anomaly! I was playing for my freedom! Now, Ive often said good newswhen sending you on a mission of extreme danger. So when I say this anomaly is dangerous, you can imagine how dangerous I really think it is. Not dangerous at all? Actually, quite dangerous indeed. That is quite dangerous! Indeed. Now stop shilly-shallying! Prep the ship and line up for your preflight coffee enemas! Warning. The enema you are about to enjoy is extremely hot.' },
-        {'id': 10, 'name': 'Name', 'customName': '', 'ateId': 10, 'tpsValue': 'name', 'description': 'Congratulations, deathballers! Weve won the right to explore the anomaly! I was playing for my freedom! Now, Ive often said good newswhen sending you on a mission of extreme danger. So when I say this anomaly is dangerous, you can imagine how dangerous I really think it is. Not dangerous at all? Actually, quite dangerous indeed. That is quite dangerous! Indeed. Now stop shilly-shallying! Prep the ship and line up for your preflight coffee enemas! Warning. The enema you are about to enjoy is extremely hot.' },
-        {'id': 11, 'name': 'Name', 'customName': '', 'ateId': 11, 'tpsValue': 'name', 'description': 'Congratulations, deathballers! Weve won the right to explore the anomaly! I was playing for my freedom! Now, Ive often said good newswhen sending you on a mission of extreme danger. So when I say this anomaly is dangerous, you can imagine how dangerous I really think it is. Not dangerous at all? Actually, quite dangerous indeed. That is quite dangerous! Indeed. Now stop shilly-shallying! Prep the ship and line up for your preflight coffee enemas! Warning. The enema you are about to enjoy is extremely hot.' }
+        {'id': 10, 'name': 'Last name', 'customName': '', 'ateId': 10, 'tpsValue': 'name', 'description': 'Congratulations, deathballers! Weve won the right to explore the anomaly! I was playing for my freedom! Now, Ive often said good newswhen sending you on a mission of extreme danger. So when I say this anomaly is dangerous, you can imagine how dangerous I really think it is. Not dangerous at all? Actually, quite dangerous indeed. That is quite dangerous! Indeed. Now stop shilly-shallying! Prep the ship and line up for your preflight coffee enemas! Warning. The enema you are about to enjoy is extremely hot.' },
+        {'id': 11, 'name': 'Middle name', 'customName': '', 'ateId': 11, 'tpsValue': 'name', 'description': 'Congratulations, deathballers! Weve won the right to explore the anomaly! I was playing for my freedom! Now, Ive often said good newswhen sending you on a mission of extreme danger. So when I say this anomaly is dangerous, you can imagine how dangerous I really think it is. Not dangerous at all? Actually, quite dangerous indeed. That is quite dangerous! Indeed. Now stop shilly-shallying! Prep the ship and line up for your preflight coffee enemas! Warning. The enema you are about to enjoy is extremely hot.' }
     ];
 });
 
 serviceApp.factory('atefields', function(){
     return[
-        {'id': 1, 'seriesId': 1, 'name': 'Name'},
-        {'id': 2, 'seriesId': 1, 'name': 'Gross'},
-        {'id': 3, 'seriesId': 1, 'name': 'SSN'},
-        {'id': 4, 'seriesId': 2, 'name': 'Date'},
-        {'id': 5, 'seriesId': 2, 'name': 'Name'},
-        {'id': 6, 'seriesId': 2, 'name': 'Name'},
-        {'id': 7, 'seriesId': 3, 'name': 'Name'},
-        {'id': 8, 'seriesId': 3, 'name': 'Name'},
-        {'id': 9, 'seriesId': 3, 'name': 'SSN'},
-        {'id': 10, 'seriesId': 1, 'name': 'Name'},
-        {'id': 11, 'seriesId': 1, 'name': 'Name'}
+        {'id': 1, 'seriesId': 1, 'description': 'Name'},
+        {'id': 2, 'seriesId': 1, 'description': 'Gross'},
+        {'id': 3, 'seriesId': 1, 'description': 'SSN'},
+        {'id': 4, 'seriesId': 2, 'description': 'Date'},
+        {'id': 5, 'seriesId': 2, 'description': 'NetLoss'},
+        {'id': 6, 'seriesId': 2, 'description': 'Dependents'},
+        {'id': 7, 'seriesId': 3, 'description': 'Dividends'},
+        {'id': 8, 'seriesId': 3, 'description': 'BirthDate'},
+        {'id': 9, 'seriesId': 3, 'description': 'SSN'},
+        {'id': 10, 'seriesId': 1, 'description': 'LastName'},
+        {'id': 11, 'seriesId': 1, 'description': 'FirstName'}
     ];
 });
 

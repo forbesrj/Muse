@@ -1,6 +1,5 @@
 <div ng-controller="FieldsCtrl">
     <h2>{{selectedEntity.name}} Entity Fields</h2>
-    <a href="">View series</a>
     <div class="row">
         <div class="col-lg-10">
             <div class="row">
@@ -13,7 +12,7 @@
                 <div class="col-lg-3"><input type="text" value="{{field.customName?field.customName:field.name}}" /></div>
                 <div class="col-lg-3">
 
-                    <select id="{{field.id}}" multiple ng-model="field.ateValues" ng-options="ateField.id as ateField.name group by ateField.seriesId for ateField in ateFields"></select>
+                    <select id="{{field.id}}" ng-model="field.ateId" ng-options="ateField.id as ateField.id + ' - ' + ateField.description group by ateField.seriesDescription for ateField in ateFields|orderBy:'name':false"></select>
                 </div>
                 <div class="col-lg-3">{{field.tpsValue}}</div>
                 <div class="col-lg-3">
