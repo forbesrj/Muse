@@ -1,36 +1,57 @@
 <div ng-controller="EntitiesCtrl">
     <div class="row">
-        <div class="col-md-12">
-            <h1>Entities</h1>
-            <label for="search">Search</label>
-            <input type="text" id="search" ng-model="search" />
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <a href="./#/addEntity/{{moduleId}}" class="btn btn-default">
-                Add new entity
-            </a>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-md-12">
-            <ul class="index">
-                <li ng-repeat="letter in alphabet"><a href="" ng-click="scrollTo(letter)">{{letter}}</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div ng-repeat="letter in groupedEntities">
-        <a id="{{letter[0][0].name[0].toUpperCase()}}"></a>
-        <h1>{{letter[0][0].name[0].toUpperCase()}}</h1>
-        <div class="row" ng-repeat="row in letter">
-            <div class="col-md-2" ng-repeat="entity in row|filter: {name: search}">
-                <a href="./#/fields/{{year}}/{{moduleId}}/{{entity.id}}">{{entity.name}}</a>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Entities</h1>
+                    <label for="search">Search</label>
+                    <input type="text" id="search" ng-model="search" />
+                </div>
             </div>
+
+
+            <div class="row index-row">
+                <div class="col-md-2">
+                    <h3>Alphabetical index:</h3>
+                </div>
+                <div class="col-md-10">
+                    <ul class="index">
+                        <li ng-repeat="letter in alphabet"><a href="" ng-click="scrollTo(letter)">{{letter}}</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div ng-repeat="letter in groupedEntities">
+                <a id="{{letter[0][0].name[0].toUpperCase()}}"></a>
+                <h1>{{letter[0][0].name[0].toUpperCase()}}</h1>
+                <div class="row" ng-repeat="row in letter">
+                    <div class="col-md-2 found-entities" ng-repeat="entity in row|filter: {name: search}">
+                        <h3><a href="./#/fields/{{year}}/{{moduleId}}/{{entity.id}}">{{entity.name}}</a></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 suggest">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="./#/addEntity/{{moduleId}}" class="add-entity btn btn-default">
+                        Add new entity
+                    </a>
+                </div>
+            </div>
+            <h2>Are you missing:</h2>
+            <ul>
+                <li ng-repeat="entity in suggestedEntities|orderBy:name:false">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <h2>{{entity.description}}</h2>
+                        </div>
+                        <div class="col-md-5">
+                            <a href="./#/updateEntity/{{entity.id}}" class="btn btn-primary"><i class="icon-plus"></i></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

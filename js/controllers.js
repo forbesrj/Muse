@@ -27,6 +27,8 @@ app.controller('EntitiesCtrl', function($scope, $routeParams, $filter, $location
     $scope.$parent.selectedEntity = null;
     $scope.search = '';
     $scope.entities = [];
+    $scope.$parent.selectedEntity = {};
+    $scope.suggestedEntities = [{'id': 90, 'description': 'J2'}, {'id': 91, 'description': 'E - PAY'},{'id':92, 'description': 'DIV 2012'}];
     $scope.moduleId = $routeParams.id;
     $scope.year = $routeParams.year;
     $scope.getEntities = function(){
@@ -44,6 +46,7 @@ app.controller('EntitiesCtrl', function($scope, $routeParams, $filter, $location
     $scope.alphabet = [];
     $scope.groupedEntities = [];
     $scope.getGroupedEntities = function(){
+        var entitiesPerRow = 6;
         var result = [];
         $scope.entities = $filter('orderBy')($scope.entities, 'name', false);
         angular.forEach($scope.entities, function(entity){
@@ -52,7 +55,7 @@ app.controller('EntitiesCtrl', function($scope, $routeParams, $filter, $location
                 $scope.alphabet.push( entity.name[0].toUpperCase());
             } else{
                 var currentRow = result[result.length - 1][result[result.length - 1].length -1];
-                if(currentRow.length < 6){
+                if(currentRow.length < entitiesPerRow){
                     currentRow.push(entity);
                 } else{
                   result[result.length - 1].push([entity]);

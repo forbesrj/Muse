@@ -68,26 +68,67 @@ a.btn {
 button {
   margin-top: 20px;
 }
+a.add-entity {
+  margin: 0 0 20px;
+}
+.index-row {
+  border-bottom: solid 1px #cccccc;
+}
+.index-row h3 {
+  margin-top: 18px;
+}
 ul.index {
   list-style-image: none;
   padding-left: 0;
   margin: 20px 0;
+  display: table;
+  width: 100%;
+  margin-bottom: 2px;
+}
+@media (max-width: 767px) {
+  ul.index {
+    display: none;
+  }
 }
 ul.index li {
-  display: inline;
+  display: table-cell;
+  text-align: center;
+  width: 16.666666666667%;
+  white-space: nowrap;
 }
 ul.index li:before {
   display: none;
 }
 ul.index li a {
   width: 100%;
-  padding: 5px 1em;
+  padding: 5px 2em;
   margin-left: 3px;
-  border: 1px solid #778;
+  border: 1px solid #cccccc;
   border-bottom: none;
+  border-radius: 10px 10px 0 0;
   text-decoration: none;
 }
 ul.index li a:hover {
   background-color: #365ebe;
   color: #ffffff;
+}
+ul.index li a:after {
+  border: solid thick blue;
+  background-color: #ffff00;
+  width: 10px;
+}
+.found-entities a {
+  border: dotted 2px #cccccc;
+  border-radius: 10px;
+}
+.suggest {
+  background-color: #cccccc;
+  padding: 20px;
+}
+.suggest .row [class*="col-"] h2 {
+  margin-top: 30px;
+  font-size: 1.24em;
+}
+.suggest .row [class*="col-"] button {
+  float: left;
 }
