@@ -27,7 +27,7 @@ app.controller('EntitiesCtrl', function($scope, $routeParams, $filter, $location
     $scope.$parent.selectedEntity = null;
     $scope.search = '';
     $scope.entities = [];
-    $scope.$parent.selectedEntity = {};
+    $scope.$parent.selectedEntity = null;
     $scope.suggestedEntities = [{'id': 90, 'description': 'J2'}, {'id': 91, 'description': 'E - PAY'},{'id':92, 'description': 'DIV 2012'}];
     $scope.moduleId = $routeParams.id;
     $scope.year = $routeParams.year;

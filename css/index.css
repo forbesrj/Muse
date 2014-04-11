@@ -31,6 +31,10 @@
   -moz-transition: all 0.5s;
   transition: all 0.5s;
 }
+.small-box a.update-entity {
+  position: relative;
+  top: 2px;
+}
 .header nav ul li a {
   font-size: 18px;
 }
